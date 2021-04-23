@@ -7,9 +7,15 @@ use Illuminate\Http\Request;
 
 class APIController extends Controller
 {
-    public function getUsers()
+    public function getUsers($id=null)
     {
-        $users = User::all();
-        return response()->json(["users" => $users]);
+        if(empty($id)){
+            $users = User::all();
+            return response()->json(["users" => $users]);
+        }else{
+            $users = User::find($id);
+            return response()->json(["users" => $users]);
+        }
+
     }
 }
