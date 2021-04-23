@@ -31,4 +31,21 @@ class APIController extends Controller
             return response()->json(['message' => 'User added successfully!']);
         }
     }
+
+    public function addMultipleUsers(Request $request){
+        if($request->isMethod('post')){
+            $userData = $request->input();
+            // echo "<pre>"; print_r($userData); die;
+
+            foreach ($userData['users'] as $key => $value) {
+                $user = new User();
+                $user->name = $value['name'];
+                $user->email = $value['email'];
+                $user->password = bcrypt($value['password']);
+                $user->save();
+            }
+
+            return response()->json(['message' => 'Users added successfully!']);
+        }
+    }
 }

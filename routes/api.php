@@ -19,5 +19,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//GET API - Fetch one or more records
 Route::get('users/{id?}', [APIController::class,'getUsers']);
+
+//POST API - Add single user
 Route::post('add-users', [APIController::class,'addUsers']);
+
+//POST API - Add multiple users
+Route::post('add-multiple-users',[APIController::class,'addMultipleUsers']);
