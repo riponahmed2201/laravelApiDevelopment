@@ -11,10 +11,10 @@ class APIController extends Controller
     {
         if(empty($id)){
             $users = User::all();
-            return response()->json(["users" => $users]);
+            return response()->json(["users" => $users],200);
         }else{
             $users = User::find($id);
-            return response()->json(["users" => $users]);
+            return response()->json(["users" => $users],200);
         }
     }
 
@@ -51,7 +51,7 @@ class APIController extends Controller
             $user->password = bcrypt($userData['password']);
             $user->save();
 
-            return response()->json(['message' => 'User added successfully!']);
+            return response()->json(['message' => 'User added successfully!'],201);
         }
     }
 
@@ -68,7 +68,7 @@ class APIController extends Controller
                 $user->save();
             }
 
-            return response()->json(['message' => 'Users added successfully!']);
+            return response()->json(['message' => 'Users added successfully!'],201);
         }
     }
 }
