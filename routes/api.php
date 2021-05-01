@@ -27,3 +27,6 @@ Route::post('add-users', [APIController::class,'addUsers']);
 
 //POST API - Add multiple users
 Route::post('add-multiple-users',[APIController::class,'addMultipleUsers']);
+
+// PUT API - Update one or more records
+Route::put('update-user-details/{id}',[APIController::class, 'updateUserDetails']);
